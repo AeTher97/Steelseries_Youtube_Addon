@@ -8,22 +8,22 @@
         "https://music.youtube.com/*"
       ],
       "js": [
-        "splashScreenData.js",
-        "addonData.js",
-        "engineEvents.js",
-        "engineUtils.js",
-        "canvas.js",
-        "siteScrapper.js",
-        "addonEngine.js"
+        "content/splashScreenData.js",
+        "content/addonData.js",
+        "content/engineEvents.js",
+        "content/engineUtils.js",
+        "content/canvas.js",
+        "content/siteScrapper.js",
+        "content/addonEngine.js"
       ]
     }
   ],
   "background": {
-    "scripts": ["background.js"],
+    "scripts": ["background/background.js"],
     "persistent": false
   },
   "page_action": {
-    "default_popup": "popup.html"
+    "default_popup": "popup/popup.html"
   },
   "permissions" : [
     "storage",
