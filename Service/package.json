@@ -1,0 +1,23 @@
+{
+  "name": "steelseries-api-finder",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "nodemon src/index.js",
+    "test": "node src/service.js",
+    "install": "node src/service.js",
+    "uninstall": "node src/unistall.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.2"
+  },
+  "devDependencies": {
+    "cors": "^2.8.5",
+    "node-windows": "^1.0.0-beta.1"
+  },
+  "description": ""
+}
