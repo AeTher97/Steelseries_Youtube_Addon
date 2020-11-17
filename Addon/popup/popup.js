@@ -6,7 +6,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     if (request.action === CHANGE_URL) {
         document.getElementById('url').value = request.engineAddress;
     } else if (request.action === STATUS) {
-        if(request.status === ERROR){
+        if (request.status === ERROR) {
             statusDiv.innerText = request.error;
             statusDiv.classList.remove('working');
             statusDiv.classList.add('error');
@@ -24,15 +24,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
         chrome.tabs.sendMessage(tabs[0].id, {action: QUERY}, (response) => {
-            document.getElementById('url').value = response.engineAddress;
-            if(response.status === ERROR){
-                statusDiv.innerText = response.error;
-                statusDiv.classList.remove('working');
-                statusDiv.classList.add('error');
-            } else {
-                statusDiv.innerText = 'Working';
-                statusDiv.classList.add('working');
-                statusDiv.classList.remove('error');
+            if (response) {
+                document.getElementById('url').value = response.engineAddress;
+                if (response.status === ERROR) {
+                    statusDiv.innerText = response.error;
+                    statusDiv.classList.remove('working');
+                    statusDiv.classList.add('error');
+                } else {
+                    statusDiv.innerText = 'Working';
+                    statusDiv.classList.add('working');
+                    statusDiv.classList.remove('error');
+                }
             }
         });
     });

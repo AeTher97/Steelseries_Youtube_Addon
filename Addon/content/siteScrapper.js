@@ -80,12 +80,16 @@ const collectYouTubeData = () => {
     }
 
 
-    let currentSeconds = Math.ceil(document.querySelector('video').currentTime);
-    let minutes = ~~((currentSeconds % 3600) / 60);
-    let secs = ~~currentSeconds % 60;
-    currentTime = minutes + ':' + (secs < 10 ? "0" : "") + secs;
+    if(document.querySelector('video')) {
+        let currentSeconds = Math.ceil(document.querySelector('video').currentTime);
+        let minutes = ~~((currentSeconds % 3600) / 60);
+        let secs = ~~currentSeconds % 60;
+        currentTime = minutes + ':' + (secs < 10 ? "0" : "") + secs;
+    }
     let durationObject = document.querySelector("#movie_player > div.ytp-chrome-bottom > div.ytp-chrome-controls > div.ytp-left-controls > div.ytp-time-display.notranslate > span.ytp-time-duration")
-    length = durationObject.innerText;
+    if(durationObject) {
+        length = durationObject.innerText;
+    }
 
 
     if (currentTime && length) {
