@@ -5,7 +5,8 @@
   "content_scripts": [
     {
       "matches": [
-        "https://music.youtube.com/*"
+        "https://music.youtube.com/*",
+        "https://*.youtube.com/*"
       ],
       "js": [
         "content/splashScreenData.js",

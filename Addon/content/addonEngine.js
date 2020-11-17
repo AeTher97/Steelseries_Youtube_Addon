@@ -62,16 +62,17 @@ const initAddon = () => {
 
 }
 
-const startAddon = ()=>{
+const startAddon = () => {
+    console.log(`Starting addon on ${isYouTubeMusic() ? 'You Tube Music' : 'YouTube'}`);
     getEngineAddress().then(response => {
-        if(response.address){
+        if (response.address) {
             console.log('Steelseries Engine found on ' + response.address + ' Starting Steelseries Youtube addon')
             engineAddress = 'http://' + response.address;
             initAddon();
         } else {
             console.error('Engine api error, stopping addon')
         }
-    }).catch( e => {
+    }).catch(e => {
         console.error('Error ' + e.message + ' engine api helper error, stopping addon');
     })
 }
