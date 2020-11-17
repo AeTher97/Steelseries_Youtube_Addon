@@ -17,6 +17,21 @@ const registerExtension = async (engineAddress) => {
     return response;
 }
 
+const checkIfEngineAvailable = (engineAddress) => {
+
+    return fetch(`${engineAddress}/game_event`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            game: addonData.name,
+            event: 'SPLASH',
+            data: {}
+        })
+    })
+}
+
 
 const registerPlayingEvent = async (engineAddress) => {
 

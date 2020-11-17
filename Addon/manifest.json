@@ -9,10 +9,12 @@
         "https://*.youtube.com/*"
       ],
       "js": [
+        "communicationStatuses.js",
         "content/splashScreenData.js",
         "content/addonData.js",
         "content/engineEvents.js",
         "content/engineUtils.js",
+        "content/popupCommunication.js",
         "content/canvas.js",
         "content/siteScrapper.js",
         "content/addonEngine.js"

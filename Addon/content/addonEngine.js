@@ -34,6 +34,7 @@ const registerIntervals = () => {
 
 const clearIntervals = () => {
     clearInterval(hearthBeatInterval);
+    clearInterval(mainLoopInterval);
 }
 
 const registerListeners = () => {
@@ -54,7 +55,9 @@ const initAddon = () => {
         displaySplash();
         registerListeners();
         registerIntervals();
+        sendRequestToPopup({action: STATUS, status: WORKING});
         console.log('Addon started!')
+        clearErrors();
     }).catch(e => {
         console.log(e.message);
     });
@@ -68,25 +71,23 @@ const startAddon = () => {
         if (response.address) {
             console.log('Steelseries Engine found on ' + response.address + ' Starting Steelseries Youtube addon')
             engineAddress = 'http://' + response.address;
+            sendRequestToPopup({action: CHANGE_URL, engineAddress: engineAddress.replace('http://','')});
             initAddon();
         } else {
+            errorMessage = 'Engine api error, stopping addon';
+            errorOccurreed = true;
+            sendRequestToPopup({action: STATUS, status: ERROR, error: errorMessage})
             console.error('Engine api error, stopping addon')
         }
     }).catch(e => {
         console.error('Error ' + e.message + ' engine api helper error, stopping addon');
+        errorMessage = 'Error while communicating with api finder, make sure it\'s installed';
+        errorOccurreed = true;
+        sendRequestToPopup({action: STATUS, status: ERROR, error: 'Error while communicating with api finder, make sure it\'s installed'})
     })
 }
 
-chrome.runtime.onMessage.addListener(
-    function (request, sender, sendResponse) {
-        if (request.action === 'query') {
-            sendResponse(engineAddress.replace('http://', ''));
-            return;
-        }
-        engineAddress = 'http://' + request.url;
-        if (!setupSuccess) {
-            initAddon();
-        }
-    });
+
+chrome.runtime.onMessage.addListener(receivedPopupRequest);
 
 startAddon();
