@@ -1,9 +1,9 @@
 {
   "name": "steelseries-api-finder",
   "version": "1.0.0",
-  "main": "src/index.js",
+  "main": "index.js",
   "scripts": {
-    "start": "nodemon src/index.js",
+    "start": "nodemon index.js",
     "test": "node src/service.js",
     "install": "node src/service.js",
     "uninstall": "node src/unistall.js"
@@ -13,11 +13,20 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
+    "node-windows": "^1.0.0-beta.1",
     "nodemon": "^2.0.2"
   },
   "devDependencies": {
-    "cors": "^2.8.5",
-    "node-windows": "^1.0.0-beta.1"
+    "cors": "^2.8.5"
+  },
+  "pkg": {
+    "scripts": [
+      "src/*.js",
+      "node_modules\\node-windows\\bin\\winsw\\winsw.exe"
+    ],
+    "asssets": [
+      "F:\\SideProjects\\Steelseries_Youtube_Addon\\Service\\node_modules\\node-windows\\bin\\winsw\\winsw.exe"
+    ]
   },
   "description": ""
 }

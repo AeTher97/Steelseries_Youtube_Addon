@@ -5,7 +5,7 @@ const cors = require('cors');
 app.use(cors());
 
 
-const {getAddress} = require("./controller");
+const {getAddress} = require("./src/controller");
 
 app.get('/', getAddress);
 
