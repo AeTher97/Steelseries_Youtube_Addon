@@ -10,15 +10,15 @@ body {
     flex-direction: column;
     align-items: center;
     padding: 10px;
-    height: 275px;
+    height: 250px;
     width: 175px;
     font-family: RobotoBold;
     color: white;
 }
 
 #logo {
-    width: 100px;
-    height: 100px;
+    width: 75px;
+    height: 75px;
 }
 
 h2, label {
@@ -38,6 +38,7 @@ input[type=text] {
     outline: none;
     color: white;
     font-family: RobotoBold;
+    font-size: 12px;
 }
 
 input[type=text]:focus {
@@ -49,7 +50,7 @@ button {
     margin-top: 10px;
     background-color: red;
     border: none;
-    color: white;
+    color: #2b2b2b;
     padding: 5px 15px;
     text-align: center;
     text-decoration: none;
@@ -71,9 +72,12 @@ button:active {
     position: relative;
 }
 #inputHolder span{
+    font-size: 12px;
+    user-select: none;
+    cursor: default;
     position: absolute;
     color: white;
-    top: 16px;
+    top: 15px;
     left: 7px;
 }
 
