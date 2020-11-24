@@ -124,9 +124,9 @@ const registerPauseEvent = async (engineAddress) => {
     return response;
 }
 
-const registerSplashEvent = async (engineAddress) => {
+const registerSplashEvent = async () => {
 
-    const response = await fetch(engineAddress, {
+    const response = await fetch(`${engineAddress}/register_game_event`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -134,21 +134,7 @@ const registerSplashEvent = async (engineAddress) => {
         body: JSON.stringify({
             game: addonData.name,
             event: 'SPLASH',
-            value_optional: true,
-            handlers: [
-                {
-                    ['device-type']: 'screened',
-                    zone: 'one',
-                    mode: 'screen',
-                    datas: [
-                        {
-                            ['has-text']: false,
-                            ['image-data']: splashScreenImage
-                        }
-                    ]
-                }
-
-            ]
+            value_optional: true
         })
     })
 
@@ -163,11 +149,12 @@ const checkIfAppInstalled = () => {
     return new Promise((resolve) => {
         chrome.storage.local.get(["installationData"], function (items) {
             try {
-                resolve(items.installationData.installed && items.installationData.version===addonData.version);
-            } catch (e){
+                resolve(items.installationData.installed && items.installationData.version === addonData.version);
+            } catch (e) {
                 resolve(false);
             }
-        })});
+        })
+    });
 }
 
 const registerAddon = async () => {
@@ -185,7 +172,7 @@ const registerAddon = async () => {
         await registerPauseEvent(bindingAddress);
         console.log('Pause event registered');
         console.log('Registering splash event');
-        await registerSplashEvent(bindingAddress);
+        await registerSplashEvent();
         console.log('Splash event registered');
         console.log('Saving version data');
         chrome.storage.local.set({"installationData": {installed: true, version: addonData.version}});
@@ -206,7 +193,14 @@ const displaySplash = () => {
         body: JSON.stringify({
             game: addonData.name,
             event: 'SPLASH',
-            data: {}
+            data: {
+                frame: {
+                    ['image-data-128x36']: splashScreenImage128x36,
+                    ['image-data-128x40']: splashScreenImage128x40,
+                    ['image-data-128x48']: splashScreenImage128x48,
+                    ['image-data-128x52']: splashScreenImage128x52,
+                }
+            }
         })
     })
 }
