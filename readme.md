@@ -4,7 +4,7 @@
 Steelseries API finder is required for mor information see ***installation***.
 
 ### Compatibility
-Extension works on both YouTube and YouTube Music. However, it is limited to Chrome browser. In the future it might be extended to support other browsers if it is possible.
+Extension works on both YouTube and YouTube Music. However, it is limited to Chrome browser. In the future it might be extended to support other browsers if possible.
 
 ### Data
 Extension displays following information on a device display:
