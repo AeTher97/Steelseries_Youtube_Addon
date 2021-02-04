@@ -2,3 +2,4 @@
 \Service\src\daemon\
 \Service\node_modules
 /Output
+/Addon/Addon.zip
