@@ -2,6 +2,20 @@ let hearthBeatInterval;
 let mainLoopInterval;
 let inactivityTime;
 let setupSuccess = false;
+let unloadListener;
+
+const broadcastChannel = new BroadcastChannel('yt_music_addon_channel');
+broadcastChannel.onmessage = (message) => {
+    if (message.data.action === REGISTER) {
+        console.log("New tab registered. Shutting down extension!")
+        clearIntervals();
+        clearListeners();
+    }
+}
+
+const broadcastPriority = () => {
+    broadcastChannel.postMessage({action: REGISTER});
+}
 
 const mainLoop = () => {
     collectData();
@@ -38,12 +52,14 @@ const clearIntervals = () => {
 }
 
 const registerListeners = () => {
-    window.addEventListener("beforeunload", () => {
+    unloadListener = window.addEventListener("beforeunload", () => {
         displaySplash();
         clearIntervals();
     });
+}
 
-
+const clearListeners = () => {
+    window.removeEventListener("beforeunload", unloadListener);
 }
 
 
@@ -71,7 +87,10 @@ const startAddon = () => {
         if (response.address) {
             console.log('Steelseries Engine found on ' + response.address + ' Starting Steelseries Youtube addon')
             engineAddress = 'http://' + response.address;
-            sendRequestToPopup({action: CHANGE_URL, engineAddress: engineAddress.replace('http://','')});
+            sendRequestToPopup({action: CHANGE_URL, engineAddress: engineAddress.replace('http://', '')});
+            console.log("Notifying other tabs")
+            broadcastPriority();
+
             initAddon();
         } else {
             errorMessage = 'Engine api error, stopping addon';
@@ -83,7 +102,11 @@ const startAddon = () => {
         console.error('Error ' + e.message + ' engine api helper error, stopping addon');
         errorMessage = 'Error while communicating with api finder, make sure it\'s installed';
         errorOccurreed = true;
-        sendRequestToPopup({action: STATUS, status: ERROR, error: 'Error while communicating with api finder, make sure it\'s installed'})
+        sendRequestToPopup({
+            action: STATUS,
+            status: ERROR,
+            error: 'Error while communicating with api finder, make sure it\'s installed'
+        })
     })
 }
 

@@ -14,6 +14,8 @@ const receivedPopupRequest = (request, sender, sendResponse) => {
             sendRequestToPopup({action: STATUS, status: ERROR, error: 'Invalid address, check it and make sure api finder is installed.'});
         })
 
+    } else if(request.actions === REGISTER){
+        broadcastPriority();
     } else {
         console.error('Unknown request type');
     }

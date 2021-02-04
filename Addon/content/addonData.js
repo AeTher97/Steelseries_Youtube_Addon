@@ -13,4 +13,4 @@ const apiHelperAddress = 'http://127.0.0.1:55555';
 
 let errorOccurreed = false;
 let errorMessage =''
-let engineAddress = 'http://127.0.0.1:60017';
+let engineAddress;

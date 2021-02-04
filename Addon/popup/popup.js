@@ -15,6 +15,8 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
             statusDiv.classList.add('working');
             statusDiv.classList.remove('error');
         }
+    } else if (request.status === REGISTER) {
+        console.log("Registering new tab");
     } else {
         console.error('Unknown request type');
     }
@@ -39,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    console.log('registering')
+    console.log('Registering popup')
     const button = document.getElementById('saveButton');
     button.addEventListener('click', () => {
         const newUrl = document.getElementById('url').value
