@@ -1,7 +1,7 @@
 # Steelseries YouTube Addon
 **Steelseries YouTube Addon** is a Chrome browser extension that displays data about song currently playing on Steelseries engine devices displays.
 
-Steelseries API finder is required for mor information see ***installation***.
+Steelseries API finder is required for more information see ***installation***.
 
 ### Compatibility
 Extension works on both YouTube and YouTube Music. However, it is limited to Chrome browser. In the future it might be extended to support other browsers if possible.
