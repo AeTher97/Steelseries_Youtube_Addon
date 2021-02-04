@@ -19,13 +19,13 @@ Extension displays following information on a device display:
 
 ### Extension
 
-Extension can be added to Chrome at [chrome web store]('https://extension').
+Extension can be added to Chrome at [chrome web store](https://extension).
 
 ### Steelseries API Finder
 
 
 **IMPORTANT**  
-Software **cannot** function without **Steelseries API finder** that can be downloaded from [releases]('https://github.com/AeTher97/Steelseries_Youtube_Addon/releases) section of this page.  
+Software **cannot** function without **Steelseries API finder** that can be downloaded from [releases](https://github.com/AeTher97/Steelseries_Youtube_Addon/releases) section of this page.  
 
 **API finder** is a Windows service that reads Steelseries engine local address from `coreProps.json`. 
 
@@ -38,7 +38,7 @@ Service wil start automatically with Windows and host Steelseries engine address
 
 ####Building from source
 
-[Node.js]('https://nodejs.org/en/) is required to perform installation.
+[Node.js](https://nodejs.org/en/) is required to perform installation.
 - Clone the repository using
 `git clone https://github.com/AeTher97/Steelseries_Youtube_Addon.git`   
 - Install Windows service using `npm install`
