@@ -36,14 +36,14 @@ Software **cannot** function without **Steelseries API finder** that can be down
 
 Service wil start automatically with Windows and host Steelseries engine address as string on `localhost:55555`.
 
-####Building from source
+#### Building from source
 
 [Node.js](https://nodejs.org/en/) is required to perform installation.
 - Clone the repository using
 `git clone https://github.com/AeTher97/Steelseries_Youtube_Addon.git`   
 - Install Windows service using `npm install`
   
-### Uninstalling
+## Uninstalling
 
 #### Exe file
 - Use uninstaller from installation folder.
