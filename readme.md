@@ -19,7 +19,7 @@ Extension displays following information on a device display:
 
 ### Extension
 
-Extension can be added to Chrome at [chrome web store](https://extension).
+Extension can be added to Chrome at [chrome web store](https://chrome.google.com/webstore/detail/steelseries-youtube-addon/gajkgbdpglpfipndamhogfooobfdapan?hl=en&authuser=0).
 
 ### Steelseries API Finder
 

@@ -6,7 +6,7 @@
     {
       "matches": [
         "https://music.youtube.com/*",
-        "https://*.youtube.com/*"
+        "https://www.youtube.com/*"
       ],
       "js": [
         "communicationStatuses.js",
