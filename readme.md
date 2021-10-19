@@ -57,4 +57,4 @@ Service wil start automatically with Windows and host Steelseries engine address
 - Service is not available on Linux or macOS.
 
 ## Related projects
-[SteelSeries Browser Cinema](https://github.com/meskill/steelseries-browser-cinema)
+- [SteelSeries Browser Cinema](https://github.com/meskill/steelseries-browser-cinema)
