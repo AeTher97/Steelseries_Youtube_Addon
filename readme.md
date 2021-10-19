@@ -55,3 +55,6 @@ Service wil start automatically with Windows and host Steelseries engine address
 ## Limitations
 - Extension required Windows service installed on a PC to function that might be solved in the future.
 - Service is not available on Linux or macOS.
+
+## Related projects
+[SteelSeries Browser Cinema](https://github.com/meskill/steelseries-browser-cinema)
