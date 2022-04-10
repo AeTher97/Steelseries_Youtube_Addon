@@ -1,3 +1,5 @@
+let failedCount= 0;
+
 const registerExtension = async (engineAddress) => {
 
     const response = await fetch(engineAddress, {
@@ -185,6 +187,9 @@ const registerAddon = async () => {
 
 
 const displaySplash = () => {
+    if(failedCount>=5){
+        connectionToEngineLost();
+    }
     fetch(`${engineAddress}/game_event`, {
         method: 'POST',
         headers: {
@@ -202,10 +207,17 @@ const displaySplash = () => {
                 }
             }
         })
+    }).then(() =>{
+        failedCount=0;
+    }).catch(e => {
+        failedCount++;
     })
 }
 
 const displayPlay = (title, time, progress) => {
+    if(failedCount>=5){
+        connectionToEngineLost();
+    }
     fetch(`${engineAddress}/game_event`, {
         method: 'POST',
         headers: {
@@ -222,10 +234,17 @@ const displayPlay = (title, time, progress) => {
                 }
             }
         })
+    }).then(() =>{
+        failedCount=0;
+    }).catch(e => {
+        failedCount++;
     })
 }
 
 const displayPause = (title, time, progress) => {
+    if(failedCount>=5){
+        connectionToEngineLost();
+    }
     fetch(`${engineAddress}/game_event`, {
         method: 'POST',
         headers: {
@@ -242,10 +261,17 @@ const displayPause = (title, time, progress) => {
                 }
             }
         })
+    }).then(() =>{
+        failedCount=0;
+    }).catch(e => {
+        failedCount++;
     })
 }
 
 const sendHearthBeat = () => {
+    if(failedCount>=5){
+        connectionToEngineLost();
+    }
     fetch(`${engineAddress}/game_heartbeat`, {
         method: 'POST',
         headers: {
@@ -254,5 +280,9 @@ const sendHearthBeat = () => {
         body: JSON.stringify({
             game: addonData.name
         })
+    }).then(() =>{
+        failedCount=0;
+    }).catch(e => {
+        failedCount++;
     })
 }

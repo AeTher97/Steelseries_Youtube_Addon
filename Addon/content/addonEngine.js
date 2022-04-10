@@ -51,6 +51,11 @@ const clearIntervals = () => {
     clearInterval(mainLoopInterval);
 }
 
+const connectionToEngineLost = () => {
+    console.error("Encountered communication error, clearing intervals, please reload the page")
+    clearIntervals();
+}
+
 const registerListeners = () => {
     unloadListener = window.addEventListener("beforeunload", () => {
         displaySplash();
